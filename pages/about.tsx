@@ -91,6 +91,7 @@ function About ({ clients, certificates }: Props) {
           </div>
         </motion.div>
         <motion.div 
+          className="mt-5 w-full max-w-[1264px]"
           initial={{ opacity: 0, y:15 }}
           whileInView={{ opacity: 1, y:0 }} 
           transition={{ delay:0.4 }} 
