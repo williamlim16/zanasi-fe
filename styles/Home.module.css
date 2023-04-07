@@ -1,0 +1,9 @@
+.redBar {
+  background-color: red;
+  height: 10px;
+}
+
+.banner {
+  width: 100%;
+  height: 70vh;
+}
