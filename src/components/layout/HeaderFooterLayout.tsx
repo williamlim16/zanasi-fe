@@ -10,6 +10,8 @@ import { getTechnologies } from "../../technologies/technologies.service";
 import { TechnologyEntity } from "../../technologies/technology.entity";
 import { HeaderMenu } from "../../header/header.entity";
 import MobileMenu from "../MobileMenu";
+import getAbout from "../../about/about.service";
+import { AboutEntity } from "../../about/about.entity";
 
 interface Props {
   children: JSX.Element
@@ -18,6 +20,7 @@ interface Props {
 function HeaderFooterLayout ({ children } : Props) {
   const { data: sectors } = useQuery<SectorEntity[], Error>('sectors', getSectors)
   const { data: technologies } = useQuery<TechnologyEntity[], Error>('technologies', getTechnologies)
+  const { data: about } = useQuery<AboutEntity[], Error>('about', getAbout)
   const [isMobileOpen, setMobileOpen] = useState(true)
 
   const variants = {
@@ -41,17 +44,17 @@ function HeaderFooterLayout ({ children } : Props) {
       ]
     },
     {
-      title: "SECTORS",
+      title: "SEKTOR",
       url: "/sectors",
       children: []
     },
     {
-      title: "PRODUCTS",
+      title: "PRODUK",
       url: "/products",
       children: []
     },
     {
-      title: "CONTACT",
+      title: "KONTAK",
       url: "/contact-us",
       children: []
     }
@@ -61,9 +64,9 @@ function HeaderFooterLayout ({ children } : Props) {
     setHeader((prev) => {
       const newArray = [...prev]
       newArray.forEach((element,index) => {
-        if(element.title === 'SECTORS'){
+        if(element.title === 'SEKTOR'){
           newArray[index] = {
-            title: "SECTORS",
+            title: "SEKTOR",
             url: "/sectors",
             children: sectors?.map((sector) => ({
               title: sector.title,
@@ -72,9 +75,9 @@ function HeaderFooterLayout ({ children } : Props) {
           }
         }
         
-        if(element.title === 'PRODUCTS'){
+        if(element.title === 'PRODUK'){
           newArray[index]  = {
-            title: "PRODUCTS",
+            title: "PRODUK",
             url: "/products",
             children: technologies?.map((technology) => ({
               title: technology.title,
@@ -88,20 +91,45 @@ function HeaderFooterLayout ({ children } : Props) {
             }))
           }
         }
+
+        if(element.title === 'KONTAK' && about && about[0].address){
+          newArray[index]  = {
+            title: "KONTAK",
+            url: "/contact-us",
+            children: [
+              {
+                title:  about[0].address,
+                url: "/contact-us"
+              },
+              {
+                title:  about[0].telephone,
+                url: "/contact-us"
+              },
+              {
+                title:  about[0].instagram,
+                url: "/contact-us"
+              },
+              {
+                title: about[0].email,
+                url: "/contact-us"
+              }
+            ]
+          }
+        }
       }
       )
       return newArray
     })
-  },[sectors, technologies])
+  },[about, sectors, technologies])
 
 
   return (
     <div>
       <nav className=" bg-primary-10">
         {/* Desktop View */}
-        <div className="hidden px-10 sm:px-6 md:block lg:px-8">
-          <div className="flex items-center justify-center">
-            <div className="flex max-w-7xl items-center">
+        <div className="hidden md:block">
+          <div className="flex  w-full items-center justify-center">
+            <div className="flex w-full max-w-[1264px] items-center">
               <Link href="/"  className="shrink-0">
                 <Image
                   src="/static/logo.png"
@@ -110,7 +138,7 @@ function HeaderFooterLayout ({ children } : Props) {
                   height={44}
                 />
               </Link>
-              <div className="ml-20  hidden h-36 items-center justify-center md:flex">
+              <div className="ml-auto  hidden h-36 items-center justify-center md:flex">
                 <ul className="flex gap-y-4 text-sm font-medium">
                   {header.map((element) => (
                     <li className="group/parent relative flex h-36 w-40 cursor-pointer items-center justify-center text-xl hover:text-primary-20" key={element.title}>
@@ -119,17 +147,17 @@ function HeaderFooterLayout ({ children } : Props) {
                       >
                         {element.title}
                       </Link>
-                      {element.children ? 
+                      {element.children && element.title !== "KONTAK" ? 
                         ( 
                           <div className="absolute top-36 left-0 z-50  hidden bg-primary-20 text-base drop-shadow-lg transition-colors  duration-300 ease-in-out group-hover/parent:block">
                             <ul className="z-20 flex flex-col items-center justify-center text-white">
                               {element.children.map((child) => (
                                 <div className="group/child relative" key={child.title}>
-                                  <Link href={child.url} className="flex h-16 w-48 cursor-pointer items-center justify-start px-10 text-left hover:bg-primary-10">
+                                  <Link href={child.url} className="flex h-16 w-60 cursor-pointer items-center justify-start px-10 text-left hover:bg-primary-10">
                                     {child.title}
                                   </Link>
                                   {child.children ? (
-                                    <div className="absolute top-0 left-48 hidden group-hover/child:block">
+                                    <div className="absolute top-0 left-60 hidden group-hover/child:block">
                                       <ul className="z-20 flex  flex-col items-center justify-center ">
                                         {child.children.map((child2) => (
                                           <Link href={child2.url} className="flex h-16 w-40 cursor-pointer items-center justify-center bg-primary-20 hover:bg-primary-10" key={child2.title}>
@@ -221,8 +249,8 @@ function HeaderFooterLayout ({ children } : Props) {
         {children}
       </div>
       <div className="h-2 bg-red-700" />
-      <div className="mt-7 flex items-center justify-center">
-        <div className=" grid w-full max-w-3xl  grid-cols-4 justify-center">
+      <div className="mt-7 flex items-center justify-center pb-7 ">
+        <div className="grid w-full max-w-[1264px]  grid-cols-4 justify-center">
           {header.map((head) => (
             <div key={`${head.title}footer`} className="col-span-4 mt-10 flex flex-col gap-1 px-8 md:col-span-1 md:gap-0">
               <Link href={head.url}> {head.title}</Link>

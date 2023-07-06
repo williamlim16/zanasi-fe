@@ -42,22 +42,22 @@ function Products ({ technologies }: Props) {
   return (
     <div>
       <BreadCrumbs data={breadcrumbs}/>
-      <div className=" flex w-full flex-col items-center bg-white text-black">
+      <div className="flex w-full flex-col items-center bg-white text-black">
         <motion.div 
           initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1 , y :0 }} transition={{ delay: 0.5 }}>
           <Image src="/static/SUB_BANNER_PRODUCTS.png" width={1264} height={400} alt="Products banner"/>
         </motion.div>
-        <div className="flex  w-full justify-center">
+        <div className="flex  w-full flex-col items-center">
           {technologies?.map((technology) => (
-            <div className="mx-5 max-w-[1264px] grow md:mx-0" key={technology.id}>
-              <motion.div className="bg-black py-2 px-3 text-white"
+            <div className="mx-5 mb-5 w-full max-w-[1264px] grow md:mx-0" key={technology.id}>
+              <motion.div className="mb-5 bg-black py-2 px-3 text-white"
                 initial={{ opacity: 0, y: 15 }} 
                 animate={{ opacity: 1 ,y :0 }} 
                 transition={{ delay: 0.55, duration: 0.7 }}
               >
                 {technology?.title}
               </motion.div>
-              <motion.div className="flex  flex-wrap justify-center"
+              <motion.div className="flex flex-wrap"
                 variants={container} initial="hidden"
                 animate="show"
               >

@@ -58,7 +58,7 @@ function Sectors ({ sectors }: Props) {
             A wide range of marking systems for coding in accordance with the requirements, able to adapt to the different processes, types of packaging, production environments, regulations and environmental conditions of the various sectors. The internal skills and realibility of Zanasi systems ensure total traceability of the product and of the packaging, both primary and secondary
           </motion.div>
         </div>
-        <motion.div className=" flex flex-wrap justify-center gap-5 " variants={container} initial="hidden"
+        <motion.div className=" flex max-w-[1264px] flex-wrap justify-center  gap-5" variants={container} initial="hidden"
           animate="show">
           {sectors.map((sector) => (
             <Card id={sector.id} title={sector.title} logoPath={sector.logo} key={sector.title} onClick={(id) => goToSector(id)}/>
