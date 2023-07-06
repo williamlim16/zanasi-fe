@@ -1,15 +1,10 @@
 /** @type {import('next').NextConfig} */
 
-module.exports = withBundleAnalyzer({
-const nextConfig = {
-	typescript:{
-		ignoreBuildErrors: true,
-	},
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+})
 
-	eslint:{
-		ignoreDuringBuilds: true,
-	},
->>>>>>> 0ec8f24 (master branch bro)
+module.exports = withBundleAnalyzer({
   reactStrictMode: true,
   swcMinify: true,
   images: {
