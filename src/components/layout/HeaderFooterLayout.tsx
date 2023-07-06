@@ -149,10 +149,10 @@ function HeaderFooterLayout ({ children } : Props) {
                       </Link>
                       {element.children && element.title !== "KONTAK" ? 
                         ( 
-                          <div className="absolute top-36 left-0 z-50  hidden bg-primary-20 text-base drop-shadow-lg transition-colors  duration-300 ease-in-out group-hover/parent:block">
+                          <div className="absolute top-36 left-0 z-50  hidden bg-primary-20 text-base transition-colors  duration-300 ease-in-out group-hover/parent:block">
                             <ul className="z-20 flex flex-col items-center justify-center text-white">
                               {element.children.map((child) => (
-                                <div className="group/child relative" key={child.title}>
+                                <Link className="group/child relative" key={child.title} href={child.url}>
                                   <Link href={child.url} className="flex h-16 w-60 cursor-pointer items-center justify-start px-10 text-left hover:bg-primary-10">
                                     {child.title}
                                   </Link>
@@ -167,7 +167,7 @@ function HeaderFooterLayout ({ children } : Props) {
                                       </ul>
                                     </div>
                                   ): null}
-                                </div>
+                                </Link>
                               ))}
                             </ul>
                           </div>

@@ -10,7 +10,6 @@ import useIndexAnimation from "../../src/sector/index/useIndexAnimation"
 import Card from "../../src/components/Card"
 import BreadCrumbs from "../../src/components/BreadCrumbs"
 import { BreadCrumbItem } from "../../src/breadcrumbs/breadcrumb.entity"
-import { useWindow } from "../../src/utility/useWindow"
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const technologies = await getTechnologies()
@@ -66,9 +65,6 @@ function TechnologyView ({ technology }: Props) {
       url: `/${technology?.id}`,
     }
   ]
-
-  const { isMobile } = useWindow()
-
   const { descriptionContainer, container }  = useIndexAnimation()
   return (
     <div>
@@ -90,21 +86,11 @@ function TechnologyView ({ technology }: Props) {
 
         <div className="mx-5 mt-10 grid max-w-[1264px] grid-cols-5 items-center justify-center gap-y-7 gap-x-10 text-primary-20 md:mx-10" >
           <motion.div className="col-span-5  flex flex-col gap-y-4 md:col-span-2" >
-            <motion.h2 className=" text-right text-primary-20 md:text-5xl"
+            <motion.h2 className=" text-right font-bold text-primary-20 md:text-5xl"
               initial={{ opacity: 0, x: 15 }} 
               animate={{ opacity: 1 , x :0 }} 
               transition={{ delay: 0.7, duration: 0.7 }}
             >{technology?.tagline}</motion.h2>
-            <motion.div 
-              initial={{ opacity: 0, x: -15 }} 
-              animate={{ opacity: 1 , x :0 }} 
-              transition={{ delay: 0.7, duration: 0.7 }}
-            >
-              { isMobile ? 
-                <Image className="max-w-full" src={technology?.logo} width={200} height={200} alt="workwithus"/>:
-                <Image className="max-w-full" src={technology?.logo} width={400} height={400} alt="workwithus"/>
-              }
-            </motion.div>
           </motion.div>
 
           <motion.div className="col-span-5  md:col-span-3" variants={descriptionContainer} initial="hidden" animate="visible">
