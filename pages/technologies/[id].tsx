@@ -3,6 +3,7 @@ import { ParsedUrlQuery } from "querystring"
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { useRouter } from "next/router"
+import Head from "next/head"
 import { getTechnologies, getTechnology } from "../../src/technologies/technologies.service"
 import { TechnologyEntity } from "../../src/technologies/technology.entity"
 import useIndexAnimation from "../../src/sector/index/useIndexAnimation"
@@ -71,6 +72,15 @@ function TechnologyView ({ technology }: Props) {
   const { descriptionContainer, container }  = useIndexAnimation()
   return (
     <div>
+      <Head>
+        <title>Zanasi - Technology:${technology?.title}</title>
+        <meta name="description" content= {technology?.description}/>
+        <link rel="icon" href="/favicon.ico" />
+        <meta property="og:image" content="/favicon.ico"/>
+        <meta property="og:description" content={technology?.description}/>
+        <meta property="og:title" content={`Zanasi - Technology: ${technology?.title}`}/>
+        <meta property="og:type" content="website"/>
+      </Head>
       <BreadCrumbs data={breadcrumbs}/>
       <div className="flex flex-col items-center justify-center bg-white">
 

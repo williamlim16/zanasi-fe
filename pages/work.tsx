@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { GetStaticProps } from "next";
 import { motion } from "framer-motion";
+import Head from "next/head";
 import Accordion from "../src/components/Accordion";
 import { WorkEntity } from "../src/work/work.entity";
 import { getWorks } from "../src/work/work.service";
@@ -36,6 +37,15 @@ function Work ({ works }: Props) {
 
   return (
     <div>
+      <Head>
+        <title>Zanasi - Work With Us</title>
+        <meta name="description" content="Specialization in industrial inkjet printers. This is the identity of Zanasi, an Italian industrial marker manufacturer. Visit our new website!" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta property="og:image" content="/favicon.ico"/>
+        <meta property="og:description" content="Specialization in industrial inkjet printers. This is the identity of Zanasi, an Italian industrial marker manufacturer. Visit our new website!"/>
+        <meta property="og:title" content="Zanasi - Work With Us"/>
+        <meta property="og:type" content="website"/>
+      </Head>
       <BreadCrumbs data={breadcrumbs}/>
       <div className=" flex flex-col content-center items-center justify-center bg-white ">
         <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1 , y :0 }} transition={{ delay: 0.5 }}>

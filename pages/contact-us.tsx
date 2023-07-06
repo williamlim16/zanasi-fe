@@ -4,6 +4,7 @@ import { GoLocation } from "react-icons/go"
 import { IoLogoInstagram, IoLogoWhatsapp } from "react-icons/io"
 import { AiOutlinePhone, AiOutlineMail } from "react-icons/ai"
 import { motion } from "framer-motion"
+import Head from "next/head"
 import { AboutEntity } from "../src/about/about.entity"
 import getAbout from "../src/about/about.service"
 import BreadCrumbs from "../src/components/BreadCrumbs"
@@ -39,6 +40,15 @@ function ContactUs ({ about }: Props) {
 
   return (
     <div>
+      <Head>
+        <title>Zanasi - Contact Us</title>
+        <meta name="description" content="Specialization in industrial inkjet printers. This is the identity of Zanasi, an Italian industrial marker manufacturer. Visit our new website!" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta property="og:image" content="/favicon.ico"/>
+        <meta property="og:description" content="Specialization in industrial inkjet printers. This is the identity of Zanasi, an Italian industrial marker manufacturer. Visit our new website!"/>
+        <meta property="og:title" content="Zanasi - Contact Us"/>
+        <meta property="og:type" content="website"/>
+      </Head>
       <BreadCrumbs data={breadcrumbs}/>
       <div className="flex flex-col items-center bg-white">
         <motion.div className="flex justify-center"

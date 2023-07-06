@@ -1,6 +1,7 @@
 import { GetStaticProps } from "next"
 import Image from "next/image"
 import { motion } from "framer-motion"
+import Head from "next/head"
 import { CertificateEntity } from "../src/certificate/certificate.entity"
 import { getCertificates } from "../src/certificate/certificate.service"
 import { ClientEntity } from "../src/clients/client.entity"
@@ -43,13 +44,22 @@ function About ({ clients, certificates }: Props) {
 
   return (
     <div>
+      <Head>
+        <title>Zanasi - About</title>
+        <meta name="description" content="Specialization in industrial inkjet printers. This is the identity of Zanasi, an Italian industrial marker manufacturer. Visit our new website!" />
+        <link rel="icon" href="/favicon.ico" />
+        <meta property="og:image" content="/favicon.ico"/>
+        <meta property="og:description" content="Specialization in industrial inkjet printers. This is the identity of Zanasi, an Italian industrial marker manufacturer. Visit our new website!"/>
+        <meta property="og:title" content="Zanasi - About"/>
+        <meta property="og:type" content="website"/>
+      </Head>
       <BreadCrumbs data={breadcrumbs}/>
       <div className="flex flex-col items-center bg-white text-black">
         <motion.div 
           initial={{ opacity: 0, y: 15 }} 
           animate={{ opacity: 1 , y :0 }} 
           transition={{ delay: 0.5 }}>
-          <Image src="/static/SUB_BANNER_ABOUT_US.png"  alt="contact us" width={1264} height={400}/>
+          <Image priority src="/static/SUB_BANNER_ABOUT_US.png"  alt="contact us" width={1264} height={400}/>
         </motion.div>
         <div className="mx-5 mt-10 grid max-w-[1264px] grid-cols-2 gap-x-5 md:mx-0">
           <motion.div className=" col-span-2 justify-self-end text-right md:col-span-1" initial={{ opacity: 0, x: 15 }} animate={{ opacity: 1 , x :0 }} transition={{ delay: 0.8, duration: 1 }}>

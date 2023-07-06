@@ -28,6 +28,5 @@
     "react/require-default-props": ["off", "always"],
     "jsx-a11y/click-events-have-key-events" : ["off", "always"],
     "jsx-a11y/no-static-element-interactions" : ["off", "always"]
-
   }
 }

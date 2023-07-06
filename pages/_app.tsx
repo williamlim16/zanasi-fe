@@ -4,7 +4,6 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { useState } from 'react';
 import HeaderFooterLayout from '../src/components/layout/HeaderFooterLayout';
 
-
 function MyApp ({ Component, pageProps  }: AppProps) {
   const [queryClient] = useState(() => new QueryClient())
 
