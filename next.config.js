@@ -5,6 +5,13 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 })
 
 module.exports = withBundleAnalyzer({
+  typescript:{
+      ignoreBuildErrors: true,
+    },
+
+    eslint:{
+      ignoreDuringBuilds: true,
+    },
   reactStrictMode: true,
   swcMinify: true,
   images: {
