@@ -56,15 +56,14 @@ function ContactUs ({ about }: Props) {
         >
           <Image src="/static/SUB_BANNER_CONTACT_US.png"  alt="contact us" width={1264} height={400}/>
         </motion.div>
-        <div className="my-10 grid w-full max-w-[1264px] grid-cols-2 gap-x-5 px-5">
-          <motion.div  className="col-span-2 h-full w-full md:col-span-1"
+        <div className="my-10 flex h-full w-full max-w-[1264px] flex-wrap justify-center gap-x-5 px-5">
+          <motion.div  className="grow"
             initial={{ opacity: 0, x: 15 }} animate={{ opacity: 1 , x :0 }} transition={{ delay: 0.5 , duration: 0.7 }}
-          > <iframe className="h-full w-full" title="map" src={process.env.googleMap} 
+          > <iframe className="h-full w-full max-w-[750px]" title="map" src={process.env.googleMap} 
               allowFullScreen 
               loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
           </motion.div>
-          <motion.div className="col-span-2  mt-5 flex flex-col gap-y-7 gap-x-3 text-black md:col-span-1 md:mt-0"
-
+          <motion.div className="col-span-2  mt-5 flex max-w-md flex-col gap-y-7 gap-x-3 text-black md:col-span-1 md:mt-0"
             initial={{ opacity: 0, x: -15 }} animate={{ opacity: 1 , x :0 }} transition={{ delay: 0.7 , duration: 0.7 }}
           >
             {about.map((element) => (

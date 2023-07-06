@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { GiHamburgerMenu } from "react-icons/gi"
 import { motion } from "framer-motion";
+import { useRouter } from "next/router";
 import { getSectors } from "../../sector/sector.service";
 import { SectorEntity } from "../../sector/sector.entity";
 import { getTechnologies } from "../../technologies/technologies.service";
@@ -18,6 +19,7 @@ interface Props {
 }
 
 function HeaderFooterLayout ({ children } : Props) {
+  const router = useRouter()
   const { data: sectors } = useQuery<SectorEntity[], Error>('sectors', getSectors)
   const { data: technologies } = useQuery<TechnologyEntity[], Error>('technologies', getTechnologies)
   const { data: about } = useQuery<AboutEntity[], Error>('about', getAbout)
@@ -152,7 +154,7 @@ function HeaderFooterLayout ({ children } : Props) {
                           <div className="absolute top-36 left-0 z-50  hidden bg-primary-20 text-base transition-colors  duration-300 ease-in-out group-hover/parent:block">
                             <ul className="z-20 flex flex-col items-center justify-center text-white">
                               {element.children.map((child) => (
-                                <Link className="group/child relative" key={child.title} href={child.url}>
+                                <div className="group/child relative" key={child.title} onClick={() => router.push(child.url)}>
                                   <Link href={child.url} className="flex h-16 w-60 cursor-pointer items-center justify-start px-10 text-left hover:bg-primary-10">
                                     {child.title}
                                   </Link>
@@ -167,7 +169,7 @@ function HeaderFooterLayout ({ children } : Props) {
                                       </ul>
                                     </div>
                                   ): null}
-                                </Link>
+                                </div>
                               ))}
                             </ul>
                           </div>
