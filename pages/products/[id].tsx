@@ -89,17 +89,6 @@ function ProductView ({ product } : Props) {
     }
   ]
 
-  const container = {
-    hidden: {  },
-    show: {
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.3,
-        duration: 0.7,
-      },
-    },
-  }
-
   const itemA = {
     hidden: { opacity: 0, y: 30 },
     show: { opacity: 1, y: 0 },
@@ -243,9 +232,13 @@ function ProductView ({ product } : Props) {
             <h2 className="text-2xl font-semibold text-primary-30">
             SPESIFIKASI TEKNIS
             </h2>
-            <motion.div className=' mt-3 grid grid-cols-1  md:grid-cols-2' variants={container} initial="hidden" whileInView="show" viewport={{ once:true }}>
+            <motion.div className=' mt-3 grid grid-cols-1  md:grid-cols-2' 
+              initial={{ opacity: 0, x:-15 }}
+              whileInView={{ opacity: 1, x:0 }} 
+              transition={{ delay:0.4, duration: 0.7 }} 
+              viewport={{ once: true }}>
               {product?.specifications?.map((specification) => (
-                <motion.div variants={itemA} className='mt-3 flex flex-col' key={specification.id}>
+                <motion.div variants={itemA} className='mt-3 flex flex-col' key={`${specification.id}${product.title}`}>
                   {specification.specification}
                   <hr className=' max-w-[3em] border-2 border-primary-20 drop-shadow-xl ' />
                 </motion.div>
