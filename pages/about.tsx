@@ -86,7 +86,7 @@ PT PRINTAMA SUKSES adalah Authorized Distributor & Partner dari:
             Mempertahankan hubungan yang baik dengan prinsipal kami menjadi salah satu fondasi utama kami. Dukungan yang kuat dari semua prinsipal membuat PT. Printama Sukses berjalan lancar.
             <br />
             <br />
-            PT PRINTAMA SUKSES percaya bahwa pelanggan hanya menginginkan yang terbaik, oleh karena itu kami mengintegrasikan produk kami untuk memberikan Solusi Identifikasi yang Tepat kepada seluruh pelanggan kami. Kami juga mengetahui betapa pentingnya layanan purna jual, jadi kami memiliki tim teknisi handal tersertifikasi yang berdedikasi untu selalu siap menyelesaikan semua masalah Anda. 
+            PT PRINTAMA SUKSES percaya bahwa pelanggan hanya menginginkan yang <b>terbaik</b>, oleh karena itu kami mengintegrasikan produk kami untuk memberikan <b>Solusi Identifikasi yang Tepat</b>  kepada seluruh pelanggan kami. Kami juga mengetahui betapa pentingnya <b>layanan purna jual,</b> jadi kami memiliki tim teknisi handal tersertifikasi yang berdedikasi untu selalu siap menyelesaikan semua masalah Anda. 
           </motion.div>
         </div>
         <motion.div className="mt-5 w-full max-w-[1264px]" 
