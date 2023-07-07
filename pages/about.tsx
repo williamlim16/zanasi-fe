@@ -70,17 +70,23 @@ function About ({ clients, certificates }: Props) {
             }
           </motion.div>
           <motion.div className="col-span-2 text-primary-20 md:col-span-1" initial={{ opacity: 0, x: -15 }} animate={{ opacity: 1 , x :0 }} transition={{ delay: 1.2, duration: 0.5 }}>
-      PT. Printama Sukses has been growing since its establishment in 1997. Our head office in Indonesia is located in Jakarta, with a branch located in Surabaya to handle East of Indonesia, and another branch in Semarang to handle Central Java. With a total of around 150 employees, we are dedicated to provide both our principals and customers the finest service and support.
-        We have been trusted as the sole distributor of Zanasi S.R.L Industrial Inkjet Printing System from Italy.
-        We are also authorized distributor and partners of:<br/>
-        Datamax - O&apos;neil, USA - Barcode Printers <br/>
-        Intermec Honeywell, USA – Barcode Printers, Barcode Scanners, Mobile Computers <br/>
-        Motorola Solutions, USA – Mobile Computers, Barcode Scanners, Access Points <br/>
-        Armor Thermal Transfer Ribbon, France – Thermal Transfer Ribbons <br/>
-        We also provide Inks, Hot Foil, Labels, and Thermal Papers. <br/>
-        Sustaining a good and beneficial relationship with our principals has been one of our key foundations. Their continuous supports have kept PT. Printama Sukses in running smoothly.
-        We believe that customers would only want the best, which is why we integrate our products to provide customers with the Right Identification Solution. We also know the importance of after-sales service and commitment; so, we have a dedicated team of capable technicians that will always ready to solve all your problems.
-        Our customers mainly falls in industrial-manufacturer category such as Mondelez, Mayora, Charoen Pokphan Indonesia, Mulia Ceramic Group, Eternit, Phapros, Medifarma, Eka Hospital, Mitra Kemayoran Hospital, Propan Raya, ICI Paint, AETRA and many others.
+PT PRINTAMA SUKSES berdiri di tahun 1997. Kantor pusat kami  berlokasi di Jakarta Utara, dengan cabang kami di Surabaya. Visi kami adalah untuk menjadi pilihan pertama pelanggan dalam menyediakan solusi perangkat keras & perangkat lunak yang berkualitas di teknologi modern saat ini; dan dapat diakui pelanggan untuk komitmen layanan dan integritas kami.
+PT PRINTAMA SUKSES adalah Authorized Distributor & Partner dari:
+            <br />
+            <br />
+            <b>ZANASI</b> Industrial Inkjet, Itali<br />
+            <b>HONEYWELL</b> Barcoding, USA<br/>
+            <b>ZEBRA</b>Barcoding, USA<br/>
+            <b>DATALOGIC</b> Barcoding, Itali<br/>
+            <b>RICOH</b> Thermal Transfer Ribbon, Japan<br/>
+            dan beberapa brand ternama lainnya.
+            Kami juga menyediakan <b>Tinta, Hot Foil, Label, dan Kertas Thermal</b>.
+            <br />
+            <br />
+            Mempertahankan hubungan yang baik dengan prinsipal kami menjadi salah satu fondasi utama kami. Dukungan yang kuat dari semua prinsipal membuat PT. Printama Sukses berjalan lancar.
+            <br />
+            <br />
+            PT PRINTAMA SUKSES percaya bahwa pelanggan hanya menginginkan yang terbaik, oleh karena itu kami mengintegrasikan produk kami untuk memberikan Solusi Identifikasi yang Tepat kepada seluruh pelanggan kami. Kami juga mengetahui betapa pentingnya layanan purna jual, jadi kami memiliki tim teknisi handal tersertifikasi yang berdedikasi untu selalu siap menyelesaikan semua masalah Anda. 
           </motion.div>
         </div>
         <motion.div className="mt-5 w-full max-w-[1264px]" 
