@@ -67,7 +67,7 @@ function SectorView ({ sector }: Props){
   return (
     <div>
       <Head>
-        <title>Zanasi - Sektor - {sector.title}</title>
+        <title>Zanasi - Sektor - { sector && sector.title}</title>
         <link rel="icon" href="/favicon.ico" />
         <meta property="og:image" content="/favicon.ico"/>
         <meta property="og:description" content="Specialization in industrial inkjet printers. This is the identity of Zanasi, an Italian industrial marker manufacturer. Visit our new website!"/>

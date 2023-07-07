@@ -69,7 +69,7 @@ function TechnologyView ({ technology }: Props) {
   return (
     <div>
       <Head>
-        <title>Zanasi - Teknologi - {technology?.title}</title>
+        <title>Zanasi - Teknologi - {technology && technology?.title}</title>
         <meta name="description" content= {technology?.description}/>
         <link rel="icon" href="/favicon.ico" />
         <meta property="og:image" content="/favicon.ico"/>
