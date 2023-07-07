@@ -69,12 +69,12 @@ function TechnologyView ({ technology }: Props) {
   return (
     <div>
       <Head>
-        <title>Zanasi - Technology:${technology?.title}</title>
+        <title>Zanasi - Teknologi - {technology?.title}</title>
         <meta name="description" content= {technology?.description}/>
         <link rel="icon" href="/favicon.ico" />
         <meta property="og:image" content="/favicon.ico"/>
         <meta property="og:description" content={technology?.description}/>
-        <meta property="og:title" content={`Zanasi - Technology: ${technology?.title}`}/>
+        <meta property="og:title" content="Zanasi - Teknologi"/>
         <meta property="og:type" content="website"/>
       </Head>
       <BreadCrumbs data={breadcrumbs}/>

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import Head from "next/head";
 import AnimatedText from "../../src/components/AnimatedText";
 import Card from "../../src/components/Card";
 import { SectorEntity } from "../../src/sector/sector.entity";
@@ -43,6 +44,14 @@ function Sectors ({ sectors }: Props) {
 
   return (
     <div>
+      <Head>
+        <title>Zanasi - Sektor</title>
+        <link rel="icon" href="/favicon.ico" />
+        <meta property="og:image" content="/favicon.ico"/>
+        <meta property="og:description" content="Specialization in industrial inkjet printers. This is the identity of Zanasi, an Italian industrial marker manufacturer. Visit our new website!"/>
+        <meta property="og:title" content="Zanasi - Sektor"/>
+        <meta property="og:type" content="website"/>
+      </Head>
       <BreadCrumbs data={breadcrumbs}/>
       <div className=" flex flex-col content-center items-center justify-center gap-y-10 bg-white" >
         <motion.div className="relative  flex content-center " 

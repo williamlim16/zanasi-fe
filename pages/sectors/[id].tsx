@@ -2,6 +2,7 @@ import { GetStaticPaths, GetStaticProps } from "next"
 import Image from "next/image"
 import { ParsedUrlQuery } from "querystring"
 import { motion } from "framer-motion";
+import Head from "next/head";
 import { SectorEntity } from "../../src/sector/sector.entity"
 import { getSector, getSectors } from "../../src/sector/sector.service"
 import StoryCardDisplay from "../../src/stories/components/StoryCardDisplay";
@@ -65,6 +66,14 @@ function SectorView ({ sector }: Props){
 
   return (
     <div>
+      <Head>
+        <title>Zanasi - Sektor - {sector.title}</title>
+        <link rel="icon" href="/favicon.ico" />
+        <meta property="og:image" content="/favicon.ico"/>
+        <meta property="og:description" content="Specialization in industrial inkjet printers. This is the identity of Zanasi, an Italian industrial marker manufacturer. Visit our new website!"/>
+        <meta property="og:title" content="Zanasi - Sektor"/>
+        <meta property="og:type" content="website"/>
+      </Head>
       <BreadCrumbs data={breadcrumbs}/>
       <div className="flex items-center justify-center bg-white">
         <div className="mx-5 mb-10 grid max-w-[1264px] grid-cols-5 items-center justify-center gap-y-5 gap-x-10 md:mx-10" >

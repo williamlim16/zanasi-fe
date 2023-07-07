@@ -1,6 +1,7 @@
 import Image from "next/image"
 import { useRouter } from "next/router"
 import { motion } from "framer-motion"
+import Head from "next/head"
 import Card from "../../src/components/Card"
 import { getTechnologies } from "../../src/technologies/technologies.service"
 import { TechnologyEntity } from "../../src/technologies/technology.entity"
@@ -41,6 +42,14 @@ function Products ({ technologies }: Props) {
   ]
   return (
     <div>
+      <Head>
+        <title>Zanasi - Produk</title>
+        <link rel="icon" href="/favicon.ico" />
+        <meta property="og:image" content="/favicon.ico"/>
+        <meta property="og:description" content="Specialization in industrial inkjet printers. This is the identity of Zanasi, an Italian industrial marker manufacturer. Visit our new website!"/>
+        <meta property="og:title" content="Zanasi - Produk"/>
+        <meta property="og:type" content="website"/>
+      </Head>
       <BreadCrumbs data={breadcrumbs}/>
       <div className="flex w-full flex-col items-center bg-white text-black">
         <motion.div 

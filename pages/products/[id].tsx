@@ -5,6 +5,7 @@ import Image from "next/image"
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import { useRef } from 'react';
 import { motion } from "framer-motion"
+import Head from "next/head"
 import { ProductEntity } from "../../src/product/product.entity"
 import { getProducts, getProduct } from "../../src/product/product.service"
 import BreadCrumbs from '../../src/components/BreadCrumbs';
@@ -106,6 +107,14 @@ function ProductView ({ product } : Props) {
 
   return (
     <div>
+      <Head>
+        <title>Zanasi - Produk - {product.title}</title>
+        <link rel="icon" href="/favicon.ico" />
+        <meta property="og:image" content="/favicon.ico"/>
+        <meta property="og:description" content="Specialization in industrial inkjet printers. This is the identity of Zanasi, an Italian industrial marker manufacturer. Visit our new website!"/>
+        <meta property="og:title" content="Zanasi - Produk"/>
+        <meta property="og:type" content="website"/>
+      </Head>
       <BreadCrumbs data={breadcrumbs}/>
       <motion.div
         className="flex flex-col items-center gap-y-4 bg-white text-black">
