@@ -35,7 +35,7 @@ function About ({ clients, certificates }: Props) {
       url: "/",
     },
     {
-      title: "About Us",
+      title: "Tentang Kami",
       url: "/about",
     }
   ]
@@ -45,12 +45,12 @@ function About ({ clients, certificates }: Props) {
   return (
     <div>
       <Head>
-        <title>Zanasi - About</title>
+        <title>Zanasi - Tentang Kami</title>
         <meta name="description" content="Specialization in industrial inkjet printers. This is the identity of Zanasi, an Italian industrial marker manufacturer. Visit our new website!" />
         <link rel="icon" href="/favicon.ico" />
         <meta property="og:image" content="/favicon.ico"/>
         <meta property="og:description" content="Specialization in industrial inkjet printers. This is the identity of Zanasi, an Italian industrial marker manufacturer. Visit our new website!"/>
-        <meta property="og:title" content="Zanasi - About"/>
+        <meta property="og:title" content="Zanasi - Tentang Kami"/>
         <meta property="og:type" content="website"/>
       </Head>
       <BreadCrumbs data={breadcrumbs}/>

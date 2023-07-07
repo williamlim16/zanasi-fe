@@ -33,7 +33,7 @@ function ContactUs ({ about }: Props) {
       url: "/",
     },
     {
-      title: "Contact Us",
+      title: "Kontak",
       url: "/contact-us",
     }
   ]
@@ -41,12 +41,12 @@ function ContactUs ({ about }: Props) {
   return (
     <div>
       <Head>
-        <title>Zanasi - Contact Us</title>
+        <title>Zanasi - Kontak</title>
         <meta name="description" content="Specialization in industrial inkjet printers. This is the identity of Zanasi, an Italian industrial marker manufacturer. Visit our new website!" />
         <link rel="icon" href="/favicon.ico" />
         <meta property="og:image" content="/favicon.ico"/>
         <meta property="og:description" content="Specialization in industrial inkjet printers. This is the identity of Zanasi, an Italian industrial marker manufacturer. Visit our new website!"/>
-        <meta property="og:title" content="Zanasi - Contact Us"/>
+        <meta property="og:title" content="Zanasi - Kontak"/>
         <meta property="og:type" content="website"/>
       </Head>
       <BreadCrumbs data={breadcrumbs}/>

@@ -1,4 +1,7 @@
 import { useQuery } from "react-query"
+import { GoLocation } from "react-icons/go"
+import { IoLogoInstagram, IoLogoWhatsapp } from "react-icons/io"
+import { AiOutlinePhone, AiOutlineMail } from "react-icons/ai"
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -30,15 +33,15 @@ function HeaderFooterLayout ({ children } : Props) {
 
   const [header, setHeader] = useState<HeaderMenu[]>([
     {
-      title: "COMPANY",
+      title: "PERUSAHAAN",
       url: "/",
       children: [
         { 
-          title: "About Us",
+          title: "Tentang Kami",
           url: "/about" 
         },
         { 
-          title: "Work With Us",
+          title: "Lowongan",
           url: "/work" 
         },
       ]
@@ -53,11 +56,6 @@ function HeaderFooterLayout ({ children } : Props) {
       url: "/products",
       children: []
     },
-    {
-      title: "KONTAK",
-      url: "/contact-us",
-      children: []
-    }
   ])
 
   useEffect(() => {
@@ -89,31 +87,6 @@ function HeaderFooterLayout ({ children } : Props) {
                 }
               )): []
             }))
-          }
-        }
-
-        if(element.title === 'KONTAK' && about && about[0].address){
-          newArray[index]  = {
-            title: "KONTAK",
-            url: "/contact-us",
-            children: [
-              {
-                title:  about[0].address,
-                url: "/contact-us"
-              },
-              {
-                title:  about[0].telephone,
-                url: "/contact-us"
-              },
-              {
-                title:  about[0].instagram,
-                url: "/contact-us"
-              },
-              {
-                title: about[0].email,
-                url: "/contact-us"
-              }
-            ]
           }
         }
       }
@@ -261,7 +234,69 @@ function HeaderFooterLayout ({ children } : Props) {
               }
             </div>
           ))}
+          <div className=" col-span-4 mt-10 flex flex-col gap-1 px-8 text-white md:col-span-1 md:gap-0">
+            KONTAK
+            {about && <div >
+              {
+                about[0].address && 
+              <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2">
+                <GoLocation className="rounded-md bg-gray-400 p-1 text-2xl text-white md:rounded-lg md:text-3xl"/>
+                <div className="flex flex-col">
+                  <div className="text-sm ">
+                    {about[0].address}
+                  </div>
+                </div>
+              </div>
+              }
+              {
+                about[0].whatsapp &&
+              <div className="mt-3 flex flex-wrap items-center gap-x-3  gap-y-2">
+                <IoLogoWhatsapp className="rounded-md bg-gray-400 p-1 text-2xl text-white md:rounded-lg md:text-3xl"/>
+                <div className="flex flex-col">
+                  <div className="text-sm ">
+                    {about[0].whatsapp}
+                  </div>
+                </div>
+              </div>
+              }
+              {
+                about[0].telephone &&
+              <div className=" mt-3 flex items-center gap-x-3 gap-y-2">
+                <AiOutlinePhone className="rounded-md bg-gray-400 p-1 text-2xl text-white md:rounded-lg md:text-3xl"/>
+                <div className="flex flex-col">
+                  <div className="text-sm md:text-base">
+                    {about[0].telephone}
+                  </div>
+                </div>
+              </div>
+              }
+              {
+                about[0].email &&
+              <div className=" mt-3 flex items-center gap-x-3 gap-y-2">
+                <AiOutlineMail className="rounded-md bg-gray-400 p-1 text-2xl text-white md:rounded-lg md:text-3xl"/>
+                <div className="flex flex-col">
+                  <div className="text-sm ">
+                    {about[0].email}
+                  </div>
+                </div>
+              </div>
+              }
+              {
+                about[0].instagram &&
+              <div className=" mt-3 flex items-center gap-x-3 gap-y-2">
+                <IoLogoInstagram className="rounded-md bg-gray-400 p-1 text-2xl text-white md:rounded-lg md:text-3xl"/>
+                <div className="flex flex-col">
+                  <div className="text-sm ">
+                    {about[0].instagram}
+                  </div>
+                </div>
+              </div>
+              }
+            </div>
+            }
+          </div>
         </div>
+
       </div>
     </div>
     

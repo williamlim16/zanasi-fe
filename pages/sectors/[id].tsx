@@ -55,7 +55,7 @@ function SectorView ({ sector }: Props){
       url: "/",
     },
     {
-      title: "Sectors",
+      title: "Sektor",
       url: "/sectors",
     },
     {

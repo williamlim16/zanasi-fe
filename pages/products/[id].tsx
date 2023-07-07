@@ -80,7 +80,7 @@ function ProductView ({ product } : Props) {
       url: "/",
     },
     {
-      title: "Products",
+      title: "Produk",
       url: "/products",
     },
     {

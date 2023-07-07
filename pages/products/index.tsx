@@ -36,7 +36,7 @@ function Products ({ technologies }: Props) {
       url: "/",
     },
     {
-      title: "Products",
+      title: "Produk",
       url: "/products",
     }
   ]
