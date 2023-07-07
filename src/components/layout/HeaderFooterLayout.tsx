@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { GiHamburgerMenu } from "react-icons/gi"
 import { motion } from "framer-motion";
-import { useRouter } from "next/router";
 import { getSectors } from "../../sector/sector.service";
 import { SectorEntity } from "../../sector/sector.entity";
 import { getTechnologies } from "../../technologies/technologies.service";
@@ -19,7 +18,6 @@ interface Props {
 }
 
 function HeaderFooterLayout ({ children } : Props) {
-  const router = useRouter()
   const { data: sectors } = useQuery<SectorEntity[], Error>('sectors', getSectors)
   const { data: technologies } = useQuery<TechnologyEntity[], Error>('technologies', getTechnologies)
   const { data: about } = useQuery<AboutEntity[], Error>('about', getAbout)
@@ -129,7 +127,7 @@ function HeaderFooterLayout ({ children } : Props) {
     <div>
       <nav className=" bg-primary-10">
         {/* Desktop View */}
-        <div className="hidden md:block">
+        <div className="hidden bg-black md:block">
           <div className="flex  w-full items-center justify-center">
             <div className="flex w-full max-w-[1264px] items-center">
               <Link href="/"  className="shrink-0">
@@ -143,7 +141,7 @@ function HeaderFooterLayout ({ children } : Props) {
               <div className="ml-auto  hidden h-36 items-center justify-center md:flex">
                 <ul className="flex gap-y-4 text-sm font-medium">
                   {header.map((element) => (
-                    <li className="group/parent relative flex h-36 w-40 cursor-pointer items-center justify-center text-xl hover:text-primary-20" key={element.title}>
+                    <li className="group/parent relative flex h-36 w-40 cursor-pointer items-center justify-center text-xl text-white hover:text-primary-20" key={element.title}>
                       <Link
                         href={element.url}
                       >
@@ -154,7 +152,7 @@ function HeaderFooterLayout ({ children } : Props) {
                           <div className="absolute top-36 left-0 z-50  hidden bg-primary-20 text-base transition-colors  duration-300 ease-in-out group-hover/parent:block">
                             <ul className="z-20 flex flex-col items-center justify-center text-white">
                               {element.children.map((child) => (
-                                <div className="group/child relative" key={child.title} onClick={() => router.push(child.url)}>
+                                <div className="group/child relative" key={child.title} >
                                   <Link href={child.url} className="flex h-16 w-60 cursor-pointer items-center justify-start px-10 text-left hover:bg-primary-10">
                                     {child.title}
                                   </Link>
@@ -251,10 +249,10 @@ function HeaderFooterLayout ({ children } : Props) {
         {children}
       </div>
       <div className="h-2 bg-red-700" />
-      <div className="mt-7 flex items-center justify-center pb-7 ">
-        <div className="grid w-full max-w-[1264px]  grid-cols-4 justify-center">
+      <div className="flex items-center justify-center bg-black py-7">
+        <div className="grid w-full max-w-[1264px]  grid-cols-4 justify-center ">
           {header.map((head) => (
-            <div key={`${head.title}footer`} className="col-span-4 mt-10 flex flex-col gap-1 px-8 md:col-span-1 md:gap-0">
+            <div key={`${head.title}footer`} className=" col-span-4 mt-10 flex flex-col gap-1 px-8 text-white md:col-span-1 md:gap-0">
               <Link href={head.url}> {head.title}</Link>
               {head.children && head.children.length > 0 &&
                 head.children.map((child) => (

@@ -7,7 +7,7 @@ type Props = {
 }
 function BreadCrumbs ({ data }: Props) {
   return (
-    <div className="flex w-full items-center justify-center gap-x-7 bg-primary-20 text-sm md:text-base">
+    <div className="flex w-full items-center justify-center gap-x-7 bg-primary-20 text-sm text-white md:text-base">
       <div className="flex w-full max-w-[1264px] gap-x-3 px-3 py-2">
         {data.map((breadcrumb, index) => (
           <div className="flex gap-x-2 " key={index}>
