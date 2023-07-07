@@ -145,8 +145,14 @@ function HeaderFooterLayout ({ children } : Props) {
                             </ul>
                           </div>
                         ): null}
+
                     </li>
                   ))}
+                  <li className="group/parent relative flex h-36 w-40 cursor-pointer items-center justify-center text-xl text-white hover:text-primary-20">
+                    <Link href="/contact-us" className="flex h-16 w-60 cursor-pointer items-center justify-start px-10 text-left hover:bg-primary-10" >
+                        KONTAK
+                    </Link>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -214,6 +220,13 @@ function HeaderFooterLayout ({ children } : Props) {
             {header.map((element) => (
               <MobileMenu menu={element} key={`${element.title}mobile`}/>
             ))}
+            <MobileMenu menu={
+              {
+                title: "KONTAK",
+                url: "/contact-us",
+                children:[]
+              }
+            }/>
           </motion.div>
         </div>
       </nav>
