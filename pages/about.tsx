@@ -63,7 +63,7 @@ function About ({ clients, certificates }: Props) {
         </motion.div>
         <div className="mx-5 mt-10 grid max-w-[1264px] grid-cols-2 gap-x-5 md:mx-0">
           <motion.div className=" col-span-2 justify-self-end text-right md:col-span-1" initial={{ opacity: 0, x: 15 }} animate={{ opacity: 1 , x :0 }} transition={{ delay: 0.8, duration: 1 }}>
-            <h2 className="text-xl text-primary-30 md:text-3xl">&quot;YOUR RIGHT IDENTIFICATION SOLUTION&quot;</h2>
+            <h2 className="text-xl text-primary-30 md:text-3xl">&quot;SOLUSI IDENTIFIKASI ANDA YANG TEPAT&quot;</h2>
             {!isMobile ? 
               <Image src="/static/IDENTIFICATION.png" width={350} height={350} alt="Identification" className="mt-5 inline"/>:
               <Image src="/static/IDENTIFICATION.png" width={200} height={200} alt="Identification" className="mt-5 mb-3 inline"/>

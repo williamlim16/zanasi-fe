@@ -35,10 +35,7 @@ function useIndexAnimation () {
   }
 
   const placeholderText = [
-    {  text: "WE WANT TO TELL" },
-    { text: "ABOUT OURSELVES" },
-    {  text: "THROUGH OUR" },
-    {  text: "EXPERIENCES" }
+    {  text: "MAKE YOUR MARK" },
   ];
   return {
     container, descriptionContainer, textContainer, placeholderText

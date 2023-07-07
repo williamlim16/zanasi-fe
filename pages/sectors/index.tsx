@@ -64,7 +64,7 @@ function Sectors ({ sectors }: Props) {
             {placeholderText.map((item) => <AnimatedText text={item.text} key={item.text}/>)}
           </motion.div>
           <motion.div className="max-w-lg text-black" variants={descriptionContainer} initial="hidden" animate="visible">
-            A wide range of marking systems for coding in accordance with the requirements, able to adapt to the different processes, types of packaging, production environments, regulations and environmental conditions of the various sectors. The internal skills and realibility of Zanasi systems ensure total traceability of the product and of the packaging, both primary and secondary
+          Berbagai sistem pengkodean dan penandaan produk yang mampu beradaptasi dengan berbagai proses, jenis pengemasan, lingkungan produksi, peraturan dan kondisi lingkungan dari berbagai sektor. Keahlian internal dan keandalan sistem Zanasi memastikan keterlacakan total untuk  produk dan kemasan Anda, baik untuk kemasan primer maupun kemasan sekunder
           </motion.div>
         </div>
         <motion.div className=" flex max-w-[1264px] flex-wrap justify-center  gap-5" variants={container} initial="hidden"

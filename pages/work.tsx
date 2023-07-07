@@ -52,10 +52,10 @@ function Work ({ works }: Props) {
           <Image src="/static/workwithus.png" width={1264} height={400} alt="work with us"/>
         </motion.div>
         <motion.div className="mx-5 mt-10 max-w-[1264px] text-black md:mx-0" initial={{ opacity: 0, x: 15 }} animate={{ opacity: 1 , x :0 }} transition={{ delay: 0.8, duration: 1 }}>
-          Join use for a better YOU! 
-          We offer Big incentives, promising career path, transport reimbursement, health insurance and pension 
-          Send your CV to hrd@zanasi.co.id and write your desired position in the subject 
-          or better more, come to our office for a walk-in interview
+          Bergabunglah dengan kami. Kami menawarkan insentive yang besar,
+           reimburse biaya transport, asuransi kesehatan, dan uang pensiun.
+            Kirim CV anda ke hrd@zanasi.co.id dan tuliskan posisi yang anda inginkan pada bagian subjek e-mail,
+             atau datanglah ke kantor kami untuk interview secara langsung.
         </motion.div>
         <motion.div className="mt-10 mb-5 flex w-full flex-col items-center justify-center gap-y-5 px-5 md:px-0 "
           initial={{ opacity: 0, y:15 }}
