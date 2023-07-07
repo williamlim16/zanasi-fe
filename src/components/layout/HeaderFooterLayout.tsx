@@ -47,7 +47,7 @@ function HeaderFooterLayout ({ children } : Props) {
       ]
     },
     {
-      title: "SEKTOR",
+      title: "SEKTOR INDUSTRI",
       url: "/sectors",
       children: []
     },
@@ -62,9 +62,9 @@ function HeaderFooterLayout ({ children } : Props) {
     setHeader((prev) => {
       const newArray = [...prev]
       newArray.forEach((element,index) => {
-        if(element.title === 'SEKTOR'){
+        if(element.title === 'SEKTOR INDUSTRI'){
           newArray[index] = {
-            title: "SEKTOR",
+            title: "SEKTOR INDUSTRI",
             url: "/sectors",
             children: sectors?.map((sector) => ({
               title: sector.title,
@@ -114,13 +114,13 @@ function HeaderFooterLayout ({ children } : Props) {
               <div className="ml-auto  hidden h-36 items-center justify-center md:flex">
                 <ul className="flex gap-y-4 text-sm font-medium">
                   {header.map((element) => (
-                    <li className="group/parent relative flex h-36 w-40 cursor-pointer items-center justify-center text-xl text-white hover:text-primary-20" key={element.title}>
+                    <li className="group/parent relative flex h-36 w-52 cursor-pointer items-center justify-center text-xl text-white hover:text-primary-20" key={element.title}>
                       <Link
                         href={element.url}
                       >
                         {element.title}
                       </Link>
-                      {element.children && element.title !== "KONTAK" ? 
+                      {element.children ? 
                         ( 
                           <div className="absolute top-36 left-0 z-50  hidden bg-primary-20 text-base transition-colors  duration-300 ease-in-out group-hover/parent:block">
                             <ul className="z-20 flex flex-col items-center justify-center text-white">
@@ -148,9 +148,9 @@ function HeaderFooterLayout ({ children } : Props) {
 
                     </li>
                   ))}
-                  <li className="group/parent relative flex h-36 w-40 cursor-pointer items-center justify-center text-xl text-white hover:text-primary-20">
+                  <li className="group/parent relative flex h-36 w-60 cursor-pointer items-center justify-center text-xl text-white hover:text-primary-20" >
                     <Link href="/contact-us" className="flex h-16 w-60 cursor-pointer items-center justify-start px-10 text-left hover:bg-primary-10" >
-                        KONTAK
+                        KONTAK KAMI
                     </Link>
                   </li>
                 </ul>
@@ -222,7 +222,7 @@ function HeaderFooterLayout ({ children } : Props) {
             ))}
             <MobileMenu menu={
               {
-                title: "KONTAK",
+                title: "KONTAK KAMI",
                 url: "/contact-us",
                 children:[]
               }
@@ -248,7 +248,7 @@ function HeaderFooterLayout ({ children } : Props) {
             </div>
           ))}
           <div className=" col-span-4 mt-10 flex flex-col gap-1 px-8 text-white md:col-span-1 md:gap-0">
-            KONTAK
+            KONTAK KAMI
             {about && <div >
               {
                 about[0].address && 
@@ -277,7 +277,7 @@ function HeaderFooterLayout ({ children } : Props) {
               <div className=" mt-3 flex items-center gap-x-3 gap-y-2">
                 <AiOutlinePhone className="rounded-md bg-gray-400 p-1 text-2xl text-white md:rounded-lg md:text-3xl"/>
                 <div className="flex flex-col">
-                  <div className="text-sm md:text-base">
+                  <div className="text-sm">
                     {about[0].telephone}
                   </div>
                 </div>
@@ -288,7 +288,7 @@ function HeaderFooterLayout ({ children } : Props) {
               <div className=" mt-3 flex items-center gap-x-3 gap-y-2">
                 <AiOutlineMail className="rounded-md bg-gray-400 p-1 text-2xl text-white md:rounded-lg md:text-3xl"/>
                 <div className="flex flex-col">
-                  <div className="text-sm ">
+                  <div className="text-sm">
                     {about[0].email}
                   </div>
                 </div>

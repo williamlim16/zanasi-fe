@@ -98,7 +98,7 @@ function TechnologyView ({ technology }: Props) {
           </motion.div>
 
           <div className="col-span-5 text-left text-2xl">
-            Our range of {technology?.title} products:
+            Produk dengan {technology?.title}:
           </div>
           <motion.div className=" col-span-5 flex flex-wrap justify-center gap-5 " variants={container} initial="hidden"
             animate="show">

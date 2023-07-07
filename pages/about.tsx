@@ -91,7 +91,7 @@ function About ({ clients, certificates }: Props) {
         >
           <div className='mx-5 lg:mx-0'>
             <div className="w-full bg-black p-3 text-sm font-medium text-white md:text-xl">
-              <h3>OUR CLIENTS</h3>
+              <h3>KLIEN KAMI</h3>
             </div>
             <div className="mt-10 flex flex-wrap gap-x-5">
               {clients.map((client) => (
@@ -108,7 +108,7 @@ function About ({ clients, certificates }: Props) {
           viewport={{ once: true }}>
           <div className='mx-5 lg:mx-0'>
             <div className=" w-full bg-black p-3 text-sm font-medium text-white  md:text-xl">
-              <h3>CERTIFICATES</h3>
+              <h3>SERTIFIKAT</h3>
             </div>
             <div className="mt-10 flex flex-wrap gap-x-5">
               {certificates.map((certificate) => (

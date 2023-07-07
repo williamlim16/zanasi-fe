@@ -73,7 +73,7 @@ function ContactUs ({ about }: Props) {
               <div className="mt-3 flex flex-wrap items-start gap-x-3 gap-y-2">
                 <GoLocation className="rounded-md bg-gray-400 p-1 text-2xl text-white md:rounded-lg md:text-3xl"/>
                 <div className="flex flex-col">
-                  <h3>ADDRESS</h3>
+                  <h3>ALAMAT</h3>
                   <div className="text-sm md:text-base">
                     {element.address}
                   </div>

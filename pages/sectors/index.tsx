@@ -37,7 +37,7 @@ function Sectors ({ sectors }: Props) {
       url: "/",
     },
     {
-      title: "Sectors",
+      title: "Sektor Industri",
       url: "/sectors",
     }
   ]

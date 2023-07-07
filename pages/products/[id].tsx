@@ -147,10 +147,10 @@ function ProductView ({ product } : Props) {
         > 
           <div className=" flex flex-col gap-x-2 bg-black px-5 py-2 text-white md:flex-row">
             <p>{product?.title} |</p> 
-            <div onClick={() => {scrollTo('benefits')}} className="cursor-pointer hover:text-primary-20">Benefits | </div>  
-            <div onClick={() => {scrollTo('applications')}} className="cursor-pointer hover:text-primary-20">Applications | </div>  
-            <div onClick={() => {scrollTo('documentation')}} className="cursor-pointer hover:text-primary-20">Documentations | </div>  
-            <div onClick={() => {scrollTo('specifications')}} className="cursor-pointer hover:text-primary-20">Specifications | </div>  
+            <span onClick={() => {scrollTo('benefits')}} className="cursor-pointer hover:text-primary-20">Keuntungan</span> |
+            <span onClick={() => {scrollTo('applications')}} className="cursor-pointer hover:text-primary-20">Aplikasi</span> |
+            <span onClick={() => {scrollTo('documentation')}} className="cursor-pointer hover:text-primary-20">Dokumentasi</span> | 
+            <span onClick={() => {scrollTo('specifications')}} className="cursor-pointer hover:text-primary-20">Spesifikasi</span> |
           </div>
         </motion.div>
 
@@ -171,7 +171,7 @@ function ProductView ({ product } : Props) {
         <div className="mt-8 w-full max-w-[1264px]">
           <div className='mx-5 lg:mx-0'>
             <h2 className="text-2xl font-semibold text-primary-30" ref={benefits}>
-            BENEFITS
+            KEUNTUNGAN
             </h2>
             <motion.div className="mt-3 grid max-w-[1264px] grid-cols-1  gap-y-4 md:grid-cols-2"
 
@@ -202,7 +202,7 @@ function ProductView ({ product } : Props) {
               transition={{ delay:0.4, duration: 0.7 }} 
               viewport={{ once: true }}
             >
-            APPLICATIONS
+            APLIKASI
             </motion.h2>
             <motion.div dangerouslySetInnerHTML={{ __html: product?.applicationDescription }} 
               initial={{ opacity: 0, y:15 }}
@@ -222,7 +222,7 @@ function ProductView ({ product } : Props) {
         <div className="my-8 mx-0 w-full max-w-[1264px] md:mx-8" ref={documentation} >
           <div className='mx-5 lg:mx-0'>
             <h2 className="text-2xl font-semibold text-primary-30">
-            DOCUMENTATION
+            DOKUMENTASI
             </h2>
             <div className='relative mt-3 h-96 max-w-[1264px]'>
               <iframe 
@@ -241,7 +241,7 @@ function ProductView ({ product } : Props) {
         <div className="mb-10 w-full max-w-[1264px]" ref={specifications} >
           <div className='mx-5 lg:mx-0'>
             <h2 className="text-2xl font-semibold text-primary-30">
-            TECHNICAL SPECIFICATIONS
+            SPESIFIKASI TEKNIS
             </h2>
             <motion.div className=' mt-3 grid grid-cols-1  md:grid-cols-2' variants={container} initial="hidden" whileInView="show" viewport={{ once:true }}>
               {product?.specifications?.map((specification) => (
