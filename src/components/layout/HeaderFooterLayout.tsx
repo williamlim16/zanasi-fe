@@ -1,109 +1,122 @@
-import { useQuery } from "react-query"
-import { GoLocation } from "react-icons/go"
-import { IoLogoInstagram, IoLogoWhatsapp } from "react-icons/io"
-import { AiOutlinePhone, AiOutlineMail } from "react-icons/ai"
-import { useEffect, useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { GiHamburgerMenu } from "react-icons/gi"
-import { motion } from "framer-motion";
-import { getSectors } from "../../sector/sector.service";
-import { SectorEntity } from "../../sector/sector.entity";
-import { getTechnologies } from "../../technologies/technologies.service";
-import { TechnologyEntity } from "../../technologies/technology.entity";
-import { HeaderMenu } from "../../header/header.entity";
-import MobileMenu from "../MobileMenu";
-import getAbout from "../../about/about.service";
-import { AboutEntity } from "../../about/about.entity";
+import { useQuery } from 'react-query';
+import { GoLocation } from 'react-icons/go';
+import {
+  IoLogoInstagram,
+  IoLogoWhatsapp,
+} from 'react-icons/io';
+import {
+  AiOutlinePhone,
+  AiOutlineMail,
+} from 'react-icons/ai';
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { GiHamburgerMenu } from 'react-icons/gi';
+import { motion } from 'framer-motion';
+import { getSectors } from '../../sector/sector.service';
+import { SectorEntity } from '../../sector/sector.entity';
+import { getTechnologies } from '../../technologies/technologies.service';
+import { TechnologyEntity } from '../../technologies/technology.entity';
+import { HeaderMenu } from '../../header/header.entity';
+import MobileMenu from '../MobileMenu';
+import getAbout from '../../about/about.service';
+import { AboutEntity } from '../../about/about.entity';
 
 interface Props {
-  children: JSX.Element
+  children: JSX.Element;
 }
 
-function HeaderFooterLayout ({ children } : Props) {
-  const { data: sectors } = useQuery<SectorEntity[], Error>('sectors', getSectors)
-  const { data: technologies } = useQuery<TechnologyEntity[], Error>('technologies', getTechnologies)
-  const { data: about } = useQuery<AboutEntity[], Error>('about', getAbout)
-  const [isMobileOpen, setMobileOpen] = useState(true)
+function HeaderFooterLayout({ children }: Props) {
+  const { data: sectors } = useQuery<SectorEntity[], Error>(
+    'sectors',
+    getSectors
+  );
+  const { data: technologies } = useQuery<
+    TechnologyEntity[],
+    Error
+  >('technologies', getTechnologies);
+  const { data: about } = useQuery<AboutEntity[], Error>(
+    'about',
+    getAbout
+  );
+  const [isMobileOpen, setMobileOpen] = useState(true);
 
   const variants = {
-    open: { opacity: 1, x: 0, height: "auto" },
-    closed: { opacity: 0, x: "-100%", height: 0 },
-  }
+    open: { opacity: 1, x: 0, height: 'auto' },
+    closed: { opacity: 0, x: '-100%', height: 0 },
+  };
 
   const [header, setHeader] = useState<HeaderMenu[]>([
     {
-      title: "PERUSAHAAN",
-      url: "/",
+      title: 'PERUSAHAAN',
+      url: '/',
       children: [
-        { 
-          title: "Tentang Kami",
-          url: "/about" 
+        {
+          title: 'Tentang Kami',
+          url: '/about',
         },
-        { 
-          title: "Lowongan",
-          url: "/work" 
+        {
+          title: 'Lowongan',
+          url: '/work',
         },
-      ]
+      ],
     },
     {
-      title: "SEKTOR INDUSTRI",
-      url: "/sectors",
-      children: []
+      title: 'SEKTOR INDUSTRI',
+      url: '/sectors',
+      children: [],
     },
     {
-      title: "PRODUK",
-      url: "/products",
-      children: []
+      title: 'PRODUK',
+      url: '/products',
+      children: [],
     },
-  ])
+  ]);
 
   useEffect(() => {
     setHeader((prev) => {
-      const newArray = [...prev]
-      newArray.forEach((element,index) => {
-        if(element.title === 'SEKTOR INDUSTRI'){
+      const newArray = [...prev];
+      newArray.forEach((element, index) => {
+        if (element.title === 'SEKTOR INDUSTRI') {
           newArray[index] = {
-            title: "SEKTOR INDUSTRI",
-            url: "/sectors",
+            title: 'SEKTOR INDUSTRI',
+            url: '/sectors',
             children: sectors?.map((sector) => ({
               title: sector.title,
-              url: `/sectors/${sector.id}`
-            }))
-          }
+              url: `/sectors/${sector.id}`,
+            })),
+          };
         }
-        
-        if(element.title === 'PRODUK'){
-          newArray[index]  = {
-            title: "PRODUK",
-            url: "/products",
+
+        if (element.title === 'PRODUK') {
+          newArray[index] = {
+            title: 'PRODUK',
+            url: '/products',
             children: technologies?.map((technology) => ({
               title: technology.title,
-              url:`/technologies/${technology.id}`,
-              children: technology.products ? technology.products.map((product) => (
-                {
+              url: `/technologies/${technology.id}`,
+              children: technology.products
+                ? technology.products.map((product) => ({
                   title: product.title,
-                  url: `/products/${product.id}`
-                }
-              )): []
-            }))
-          }
+                  url: `/products/${product.id}`,
+                }))
+                : [],
+            })),
+          };
         }
-      }
-      )
-      return newArray
-    })
-  },[about, sectors, technologies])
-
+      });
+      return newArray;
+    });
+  }, [about, sectors, technologies]);
 
   return (
     <div>
       <nav className=" bg-primary-10">
         {/* Desktop View */}
-        <div className="hidden bg-black md:block">
+        <div className="hidden bg-black xl:block">
           <div className="flex  w-full items-center justify-center">
             <div className="flex w-full max-w-[1264px] items-center">
-              <Link href="/"  className="shrink-0">
+              <Link href="/" className="shrink-0">
                 <Image
                   src="/static/logo.png"
                   alt="Workflow"
@@ -114,49 +127,69 @@ function HeaderFooterLayout ({ children } : Props) {
               <div className="ml-auto  hidden h-36 items-center justify-center md:flex">
                 <ul className="flex gap-y-4 text-sm font-medium">
                   {header.map((element) => (
-                    <li className="group/parent relative flex h-36 w-52 cursor-pointer items-center justify-center text-xl text-white hover:text-primary-20" key={element.title}>
-                      <Link
-                        href={element.url}
-                      >
+                    <li
+                      className="group/parent relative flex h-36 w-52 cursor-pointer items-center justify-center text-xl text-white hover:text-primary-20"
+                      key={element.title}
+                    >
+                      <Link href={element.url}>
                         {element.title}
                       </Link>
-                      {element.children ? 
-                        ( 
-                          <div className="absolute top-36 left-0 z-50  hidden bg-primary-20 text-base transition-colors  duration-300 ease-in-out group-hover/parent:block">
-                            <ul className="z-20 flex flex-col items-center justify-center text-white">
-                              {element.children.map((child) => (
-                                <div className="group/child relative" key={child.title} >
-                                  <Link href={child.url} className="flex h-16 w-60 cursor-pointer items-center justify-start px-10 text-left hover:bg-primary-10">
+                      {element.children ? (
+                        <div className="absolute top-36 left-0 z-50  hidden bg-primary-20 text-base transition-colors  duration-300 ease-in-out group-hover/parent:block">
+                          <ul className="z-20 flex flex-col items-center justify-center text-white">
+                            {element.children.map(
+                              (child) => (
+                                <div
+                                  className="group/child relative"
+                                  key={child.title}
+                                >
+                                  <Link
+                                    href={child.url}
+                                    className="flex h-16 w-60 cursor-pointer items-center justify-start px-10 text-left hover:bg-primary-10"
+                                  >
                                     {child.title}
                                   </Link>
                                   {child.children ? (
                                     <div className="absolute top-0 left-60 hidden group-hover/child:block">
                                       <ul className="z-20 flex  flex-col items-center justify-center ">
-                                        {child.children.map((child2) => (
-                                          <Link href={child2.url} className="flex h-16 w-40 cursor-pointer items-center justify-center bg-primary-20 hover:bg-primary-10" key={child2.title}>
-                                            {child2.title}
-                                          </Link>
-                                        ))}
+                                        {child.children.map(
+                                          (child2) => (
+                                            <Link
+                                              href={
+                                                child2.url
+                                              }
+                                              className="flex h-16 w-40 cursor-pointer items-center justify-center bg-primary-20 hover:bg-primary-10"
+                                              key={
+                                                child2.title
+                                              }
+                                            >
+                                              {child2.title}
+                                            </Link>
+                                          )
+                                        )}
                                       </ul>
                                     </div>
-                                  ): null}
+                                  ) : null}
                                 </div>
-                              ))}
-                            </ul>
-                          </div>
-                        ): null}
-
+                              )
+                            )}
+                          </ul>
+                        </div>
+                      ) : null}
                     </li>
                   ))}
-                  <li className="group/parent relative flex h-36 w-60 cursor-pointer items-center justify-center text-xl text-white hover:text-primary-20" >
-                    <Link href="/contact-us" className="flex h-16 w-60 cursor-pointer items-center justify-start px-10 text-left hover:bg-primary-10" >
-                        KONTAK KAMI
+                  <li className="group/parent relative flex h-36 w-60 cursor-pointer items-center justify-center text-xl text-white hover:text-primary-20">
+                    <Link
+                      href="/contact-us"
+                      className="flex h-16 w-60 cursor-pointer items-center justify-start px-10 text-left hover:bg-primary-10"
+                    >
+                      KONTAK KAMI
                     </Link>
                   </li>
                 </ul>
               </div>
             </div>
-            
+
             <div className="-mr-2 flex md:hidden">
               <button
                 type="button"
@@ -164,7 +197,9 @@ function HeaderFooterLayout ({ children } : Props) {
                 aria-controls="mobile-menu"
                 aria-expanded="false"
               >
-                <span className="sr-only">Open main menu</span>
+                <span className="sr-only">
+                  Open main menu
+                </span>
                 <svg
                   className="block h-6 w-6"
                   xmlns="http://www.w3.org/2000/svg"
@@ -199,10 +234,10 @@ function HeaderFooterLayout ({ children } : Props) {
             </div>
           </div>
         </div>
-  
+
         {/* Mobile View */}
-        <div className=" md:hidden" id="mobile-menu">
-          <div  className="flex items-center justify-center px-5 pt-5">
+        <div className=" xl:hidden" id="mobile-menu">
+          <div className="flex items-center justify-center px-5 pt-5">
             <Link href="/">
               <Image
                 src="/static/logo.png"
@@ -211,109 +246,123 @@ function HeaderFooterLayout ({ children } : Props) {
                 height={30}
               />
             </Link>
-            <GiHamburgerMenu className="ml-auto" onClick={() => {setMobileOpen((prev) => !prev)}}/>
+            <GiHamburgerMenu
+              className="ml-auto"
+              onClick={() => {
+                setMobileOpen((prev) => !prev);
+              }}
+            />
           </div>
-          <motion.div className="space-y-1 px-4 py-3 sm:px-3" variants={variants} animate={isMobileOpen ? "open" : "closed"} transition={{
-            ease: "easeInOut",
-            duration: 0.5,
-          }}>
+          <motion.div
+            className="space-y-1 px-4 py-3 sm:px-3"
+            variants={variants}
+            animate={isMobileOpen ? 'open' : 'closed'}
+            transition={{
+              ease: 'easeInOut',
+              duration: 0.5,
+            }}
+          >
             {header.map((element) => (
-              <MobileMenu menu={element} key={`${element.title}mobile`}/>
+              <MobileMenu
+                menu={element}
+                key={`${element.title}mobile`}
+              />
             ))}
-            <MobileMenu menu={
-              {
-                title: "KONTAK KAMI",
-                url: "/contact-us",
-                children:[]
-              }
-            }/>
+            <MobileMenu
+              menu={{
+                title: 'KONTAK KAMI',
+                url: '/contact-us',
+                children: [],
+              }}
+            />
           </motion.div>
         </div>
       </nav>
       <div className="h-2 bg-red-700" />
-      <div>
-        {children}
-      </div>
+      <div>{children}</div>
       <div className="h-2 bg-red-700" />
       <div className="flex items-center justify-center bg-black py-7">
         <div className="grid w-full max-w-[1264px]  grid-cols-4 justify-center ">
           {header.map((head) => (
-            <div key={`${head.title}footer`} className=" col-span-4 mt-10 flex flex-col gap-1 px-8 text-white md:col-span-1 md:gap-0">
+            <div
+              key={`${head.title}footer`}
+              className=" col-span-4 mt-10 flex flex-col gap-1 px-8 text-white md:col-span-1 md:gap-0"
+            >
               <Link href={head.url}> {head.title}</Link>
-              {head.children && head.children.length > 0 &&
+              {head.children &&
+                head.children.length > 0 &&
                 head.children.map((child) => (
-                  <Link className="mt-3" href={child.url} key={`${child.title}footer`}>{child.title}</Link>
-                ))
-              }
+                  <Link
+                    className="mt-3"
+                    href={child.url}
+                    key={`${child.title}footer`}
+                  >
+                    {child.title}
+                  </Link>
+                ))}
             </div>
           ))}
           <div className=" col-span-4 mt-10 flex flex-col gap-1 px-8 text-white md:col-span-1 md:gap-0">
             KONTAK KAMI
-            {about && <div >
-              {
-                about[0].address && 
-              <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2">
-                <GoLocation className="rounded-md bg-gray-400 p-1 text-2xl text-white md:rounded-lg md:text-3xl"/>
-                <div className="flex flex-col">
-                  <div className="text-sm ">
-                    {about[0].address}
+            {about && (
+              <div>
+                {about[0].address && (
+                  <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2">
+                    <GoLocation className="rounded-md bg-gray-400 p-1 text-2xl text-white md:rounded-lg md:text-3xl" />
+                    <div className="flex flex-col">
+                      <div className="text-sm ">
+                        {about[0].address}
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-              }
-              {
-                about[0].whatsapp &&
-              <div className="mt-3 flex flex-wrap items-center gap-x-3  gap-y-2">
-                <IoLogoWhatsapp className="rounded-md bg-gray-400 p-1 text-2xl text-white md:rounded-lg md:text-3xl"/>
-                <div className="flex flex-col">
-                  <div className="text-sm ">
-                    {about[0].whatsapp}
+                )}
+                {about[0].whatsapp && (
+                  <div className="mt-3 flex flex-wrap items-center gap-x-3  gap-y-2">
+                    <IoLogoWhatsapp className="rounded-md bg-gray-400 p-1 text-2xl text-white md:rounded-lg md:text-3xl" />
+                    <div className="flex flex-col">
+                      <div className="text-sm ">
+                        {about[0].whatsapp}
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-              }
-              {
-                about[0].telephone &&
-              <div className=" mt-3 flex items-center gap-x-3 gap-y-2">
-                <AiOutlinePhone className="rounded-md bg-gray-400 p-1 text-2xl text-white md:rounded-lg md:text-3xl"/>
-                <div className="flex flex-col">
-                  <div className="text-sm">
-                    {about[0].telephone}
+                )}
+                {about[0].telephone && (
+                  <div className=" mt-3 flex items-center gap-x-3 gap-y-2">
+                    <AiOutlinePhone className="rounded-md bg-gray-400 p-1 text-2xl text-white md:rounded-lg md:text-3xl" />
+                    <div className="flex flex-col">
+                      <div className="text-sm">
+                        {about[0].telephone}
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-              }
-              {
-                about[0].email &&
-              <div className=" mt-3 flex items-center gap-x-3 gap-y-2">
-                <AiOutlineMail className="rounded-md bg-gray-400 p-1 text-2xl text-white md:rounded-lg md:text-3xl"/>
-                <div className="flex flex-col">
-                  <div className="text-sm">
-                    {about[0].email}
+                )}
+                {about[0].email && (
+                  <div className=" mt-3 flex items-center gap-x-3 gap-y-2">
+                    <AiOutlineMail className="rounded-md bg-gray-400 p-1 text-2xl text-white md:rounded-lg md:text-3xl" />
+                    <div className="flex flex-col">
+                      <div className="text-sm">
+                        {about[0].email}
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-              }
-              {
-                about[0].instagram &&
-              <div className=" mt-3 flex items-center gap-x-3 gap-y-2">
-                <IoLogoInstagram className="rounded-md bg-gray-400 p-1 text-2xl text-white md:rounded-lg md:text-3xl"/>
-                <div className="flex flex-col">
-                  <div className="text-sm ">
-                    {about[0].instagram}
+                )}
+                {about[0].instagram && (
+                  <div className=" mt-3 flex items-center gap-x-3 gap-y-2">
+                    <IoLogoInstagram className="rounded-md bg-gray-400 p-1 text-2xl text-white md:rounded-lg md:text-3xl" />
+                    <div className="flex flex-col">
+                      <div className="text-sm ">
+                        {about[0].instagram}
+                      </div>
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
-              }
-            </div>
-            }
+            )}
           </div>
         </div>
-
       </div>
     </div>
-    
-  )
+  );
 }
 
-export default HeaderFooterLayout
+export default HeaderFooterLayout;

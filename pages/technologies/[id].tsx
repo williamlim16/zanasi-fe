@@ -46,12 +46,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 }
 
 type Props = {
-    technology: TechnologyEntity
+  technology: TechnologyEntity
 }
 
-function TechnologyView ({ technology }: Props) {
+function TechnologyView({ technology }: Props) {
   const router = useRouter()
-  function goToProduct (id: string){
+  function goToProduct(id: string) {
     router.push(`/products/${id}`)
   }
 
@@ -65,30 +65,30 @@ function TechnologyView ({ technology }: Props) {
       url: `/${technology?.id}`,
     }
   ]
-  const { descriptionContainer, container }  = useIndexAnimation()
+  const { descriptionContainer, container } = useIndexAnimation()
   return (
     <div>
       <Head>
-        <title>Zanasi - Teknologi - {technology && technology?.title}</title>
-        <meta name="description" content= {technology?.description}/>
+        <title>{`Zanasi - Teknologi -${technology && technology?.title}`}</title>
+        <meta name="description" content={technology?.description} />
         <link rel="icon" href="/favicon.ico" />
-        <meta property="og:image" content="/favicon.ico"/>
-        <meta property="og:description" content={technology?.description}/>
-        <meta property="og:title" content="Zanasi - Teknologi"/>
-        <meta property="og:type" content="website"/>
+        <meta property="og:image" content="/favicon.ico" />
+        <meta property="og:description" content={technology?.description} />
+        <meta property="og:title" content="Zanasi - Teknologi" />
+        <meta property="og:type" content="website" />
       </Head>
-      <BreadCrumbs data={breadcrumbs}/>
+      <BreadCrumbs data={breadcrumbs} />
       <div className="flex flex-col items-center justify-center bg-white">
 
-        <motion.div  initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1 , y :0 }} transition={{ delay: 0.5 }}>
-          <Image className="max-w-full" src={technology?.banner} width={1264} height={400} alt="workwithus"/>
+        <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}>
+          <Image className="max-w-full" src={technology?.banner} width={1264} height={400} alt="workwithus" />
         </motion.div>
 
         <div className="mx-5 mt-10 grid max-w-[1264px] grid-cols-5 items-center justify-center gap-y-7 gap-x-10 text-primary-20 md:mx-10" >
           <motion.div className="col-span-5  flex flex-col gap-y-4 md:col-span-2" >
             <motion.h2 className=" text-right font-bold text-primary-20 md:text-5xl"
-              initial={{ opacity: 0, x: 15 }} 
-              animate={{ opacity: 1 , x :0 }} 
+              initial={{ opacity: 0, x: 15 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.7, duration: 0.7 }}
             >{technology?.tagline}</motion.h2>
           </motion.div>
@@ -103,7 +103,7 @@ function TechnologyView ({ technology }: Props) {
           <motion.div className=" col-span-5 flex flex-wrap justify-center gap-5 " variants={container} initial="hidden"
             animate="show">
             {technology?.products?.map((product) => (
-              <Card id={product.id} logoPath={product.product} onClick={() => {goToProduct(product.id)}} title={product.title} key={product.id}/>
+              <Card id={product.id} logoPath={product.product} onClick={() => { goToProduct(product.id) }} title={product.title} key={product.id} />
             ))}
           </motion.div>
 
