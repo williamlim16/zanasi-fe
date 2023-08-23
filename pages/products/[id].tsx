@@ -10,6 +10,7 @@ import { ProductEntity } from "../../src/product/product.entity"
 import { getProducts, getProduct } from "../../src/product/product.service"
 import BreadCrumbs from '../../src/components/BreadCrumbs';
 import { BreadCrumbItem } from '../../src/breadcrumbs/breadcrumb.entity';
+import useWindow from '../../src/utility/useWindow';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const products = await getProducts()
@@ -93,6 +94,7 @@ function ProductView({ product }: Props) {
     hidden: { opacity: 0, y: 30 },
     show: { opacity: 1, y: 0 },
   }
+  const { isTablet } = useWindow()
 
   return (
     <div>
@@ -107,23 +109,26 @@ function ProductView({ product }: Props) {
       <BreadCrumbs data={breadcrumbs} />
       <motion.div
         className="flex flex-col items-center gap-y-4 bg-white text-black">
-        <motion.div className="grid h-[400px] w-full max-w-[1264px] grid-cols-4 p-4" style={{
-          backgroundImage: `url(${product?.banner})`,
-          alignItems: "center"
-        }}
-          initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}
-        >
-
-          <div className="col-span-3" />
-          <div className="col-span-3 md:col-span-1">
+        <motion.div className="relative grid w-full max-w-[1264px] grid-cols-4">
+          <motion.div className="absolute z-0 h-full max-h-[400px] w-full max-w-[1264px]"
+            style={{
+              backgroundImage: `url(${product?.banner})`,
+              alignItems: "center"
+            }}
+            initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}
+          />
+          <div className="col-span-3 h-[450px] xl:h-0" />
+          <div className="col-span-4 flex items-center justify-center xl:col-span-1">
             {product?.productIllustrations && product.productIllustrations.length > 0 &&
               <Splide options={{
                 rewind: true,
-                width: 550,
-              }}>
+                width: isTablet ? 250 : 550,
+                pagination: false,
+              }} className='w-full'>
                 {product?.productIllustrations?.map((productIllustration) => (
-                  <SplideSlide key={productIllustration.id}>
-                    <Image src={productIllustration?.illustration} width={500} height={500} alt="illustrations" />
+                  <SplideSlide key={productIllustration.id} className='flex items-center '>
+                    <Image className='hidden xl:block' src={productIllustration?.illustration} width={500} height={500} alt="illustrations" />
+                    <Image className='block xl:hidden' src={productIllustration?.illustration} width={200} height={200} alt="illustrations" />
                   </SplideSlide>
                 ))}
               </Splide>
@@ -134,9 +139,9 @@ function ProductView({ product }: Props) {
         <motion.div className="w-full max-w-[1264px]"
           initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7, duration: 1 }}
         >
-          <div className=" flex flex-col gap-x-2 bg-black px-5 py-2 text-white md:flex-row">
+          <div className=" flex flex-row flex-wrap gap-x-2 bg-black px-5 py-2 text-xs text-white xl:text-base">
             <p>{product?.title} |</p>
-            <span onClick={() => { scrollTo('benefits') }} className="cursor-pointer hover:text-primary-20">Keuntungan</span> |
+            <span onClick={() => { scrollTo('benefits') }} className="cursor-pointer  hover:text-primary-20">Keuntungan</span> |
             <span onClick={() => { scrollTo('applications') }} className="cursor-pointer hover:text-primary-20">Aplikasi</span> |
             <span onClick={() => { scrollTo('documentation') }} className="cursor-pointer hover:text-primary-20">Dokumentasi</span> |
             <span onClick={() => { scrollTo('specifications') }} className="cursor-pointer hover:text-primary-20">Spesifikasi</span> |
@@ -201,7 +206,7 @@ function ProductView({ product }: Props) {
             />
           </div>
 
-          <div className="flex max-w-[1264px] flex-wrap gap-x-4">
+          <div className="mt-2 flex max-w-[1264px] flex-wrap gap-4 px-3 xl:px-0">
             {product?.applications?.map((application) => (
               <Image src={application?.illustration} width={328} height={280} alt={application?.title} key={application.id} />
             ))}
