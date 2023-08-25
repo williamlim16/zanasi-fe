@@ -22,15 +22,19 @@ module.exports = withBundleAnalyzer({
       },
       {
         protocol: 'https',
-        hostname: 'williamlim.dev'
+        hostname: 'zanasi.co.id'
       },
       {
         protocol: 'http',
-        hostname: '52.77.244.80'
+        hostname: 'zanasi.co.id'
       },
       {
         protocol: 'http',
         hostname: '127.0.0.1'
+      },
+      {
+        protocol: 'http',
+        hostname: '52.77.244.80'
       }
     ]
   },
