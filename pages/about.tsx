@@ -166,13 +166,14 @@ function About({ clients, certificates }: Props) {
             </div>
             <div className="mt-10 flex flex-wrap gap-x-5">
               {clients.map((client) => (
-                <Image
-                  src={client.logo}
-                  width={200}
-                  height={100}
-                  alt={client.title}
-                  key={client.id}
-                />
+                <div key={client.id} className=' relative h-36 w-40'>
+                  <Image
+                    src={client.logo}
+                    fill
+                    alt={client.title}
+                    style={{ objectFit: "contain" }}
+                  />
+                </div>
               ))}
             </div>
           </div>
